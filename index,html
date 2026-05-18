@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROMA Servicios & Tramites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8964A;
+    --gold-light: #D4AF6B;
+    --gold-pale: #F5EDD9;
+    --dark: #1A1612;
+    --dark-mid: #2E2820;
+    --dark-soft: #3D3529;
+    --mid: #6B5E4A;
+    --light: #F8F4EE;
+    --white: #FDFAF6;
+    --text: #2E2820;
+    --muted: #8A7A67;
+    --border: rgba(184,150,74,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(253,250,246,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold) !important;
+    border: 1px solid var(--gold) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--white) !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 8% 80px 10%;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -1px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5vw, 78px);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: rgba(253,250,246,0.55);
+    max-width: 380px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 14px 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    color: rgba(253,250,246,0.6);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 60px;
+    left: 10%;
+    display: flex;
+    gap: 3rem;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(253,250,246,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-right {
+    background: var(--light);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 8% 80px;
+  }
+
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-card-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .hero-card-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-pale);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-card-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .hero-contact-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    background: var(--gold-pale);
+    border-top: 1px solid var(--border);
+    padding: 18px 8%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+  }
+
+  .contact-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .contact-item:hover { color: var(--dark); }
+
+  /* SECTION BASE */
+  section {
+    padding: 100px 10%;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 3.5vw, 54px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--dark);
+    max-width: 580px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* SERVICES */
+  #servicios {
+    background: var(--light);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+
+  .service-card:hover {
+    background: var(--dark);
+  }
+
+  .service-card:hover .service-name { color: var(--white); }
+  .service-card:hover .service-desc { color: rgba(253,250,246,0.5); }
+  .service-card:hover .service-num { color: rgba(184,150,74,0.3); }
+  .service-card:hover .service-icon { background: rgba(184,150,74,0.15); }
+  .service-card:hover .service-icon svg { stroke: var(--gold-light); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--border);
+    color: rgba(184,150,74,0.4);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--gold-pale);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke 0.3s;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.8rem;
+    transition: color 0.3s;
+  }
+
+  .service-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.75;
+    transition: color 0.3s;
+  }
+
+  .service-list {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .service-list li {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition: color 0.3s;
+  }
+
+  .service-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-list li { color: rgba(253,250,246,0.55); }
+  .service-card:hover .service-list li::before { color: var(--gold-light); }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.1rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .service-card:hover .service-tag {
+    color: var(--gold-light);
+    border-color: rgba(212,175,107,0.35);
+  }
+
+  /* Ocultar detalle en tarjeta, mostrar solo en modal */
+  .service-list,
+  .service-tag { display: none; }
+
+  .service-card-hint {
+    margin-top: 1.2rem;
+    font-size: 11.5px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.3s;
+  }
+  .service-card-hint svg {
+    width: 13px; height: 13px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+    transition: stroke 0.3s, transform 0.3s;
+  }
+  .service-card:hover .service-card-hint { color: var(--gold-light); }
+  .service-card:hover .service-card-hint svg { stroke: var(--gold-light); }
+
+  /* MODAL */
+  .service-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,12,9,0.6);
+    z-index: 1000;
+    align-items: stretch;
+    justify-content: flex-end;
+    backdrop-filter: blur(4px);
+  }
+  .service-modal-overlay.active { display: flex; }
+
+  .service-modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: drawerIn 0.35s cubic-bezier(0.22,1,0.36,1);
+    overflow: hidden;
+  }
+
+  @keyframes drawerIn {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .modal-header {
+    background: var(--dark);
+    padding: 2.8rem 2.8rem 2.2rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .modal-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.8rem;
+  }
+
+  .modal-close {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    color: rgba(253,250,246,0.5);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .modal-close:hover {
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+  }
+
+  .modal-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-icon {
+    width: 52px; height: 52px;
+    background: rgba(184,150,74,0.12);
+    border: 1px solid rgba(184,150,74,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .modal-icon svg {
+    width: 24px; height: 24px;
+    stroke: var(--gold-light); fill: none; stroke-width: 1.5;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .modal-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2.4rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .modal-desc {
+    font-size: 14.5px;
+    color: var(--mid);
+    line-height: 1.85;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.8rem;
+  }
+
+  .modal-section-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .modal-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 2rem;
+  }
+
+  .modal-list li {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(184,150,74,0.1);
+  }
+  .modal-list li:last-child { border-bottom: none; }
+
+  .modal-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .modal-footer {
+    padding: 1.8rem 2.8rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-shrink: 0;
+    background: var(--white);
+  }
+
+  .modal-tag {
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+  }
+
+  .modal-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    transition: background 0.2s, gap 0.2s;
+    white-space: nowrap;
+  }
+  .modal-cta:hover {
+    background: var(--gold);
+    color: var(--dark);
+    gap: 0.9rem;
+  }
+
+  /* ABOUT */
+  #sobre-nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p:first-of-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.5;
+  }
+
+  .about-quote {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dark-soft);
+    line-height: 1.5;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-box {
+    background: var(--dark);
+    padding: 3rem;
+    border-radius: 4px;
+  }
+
+  .about-feature {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .about-feature:last-child { margin-bottom: 0; }
+
+  .about-feature-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .about-feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .about-feature-text {
+    font-size: 13px;
+    color: rgba(253,250,246,0.45);
+    line-height: 1.7;
+  }
+
+  /* DESIGN */
+  #diseno {
+    background: var(--dark);
+  }
+
+  #diseno .section-title { color: var(--white); }
+
+  .design-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .design-subtitle {
+    font-size: 15px;
+    color: rgba(253,250,246,0.45);
+    max-width: 360px;
+    line-height: 1.8;
+  }
+
+  .design-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .design-item {
+    background: var(--dark-mid);
+    border: 1px solid rgba(184,150,74,0.12);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+
+  .design-item:hover { border-color: rgba(184,150,74,0.4); }
+
+  .design-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .design-item-text {
+    font-size: 13px;
+    color: rgba(253,250,246,0.4);
+    line-height: 1.7;
+  }
+
+  .design-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(184,150,74,0.1);
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  /* EDITORIAL */
+  #editorial {
+    background: var(--gold-pale);
+    padding: 80px 10%;
+    text-align: center;
+  }
+
+  .editorial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.3;
+    max-width: 720px;
+    margin: 0 auto 2rem;
+  }
+
+  .editorial-desc {
+    font-size: 15px;
+    color: var(--mid);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  /* CONTACT */
+  #contacto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .contact-left {
+    background: var(--dark);
+    padding: 100px 8% 100px 10%;
+  }
+
+  .contact-left .section-title { color: var(--white); }
+
+  .contact-details {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-detail-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(184,150,74,0.1);
+    border: 1px solid rgba(184,150,74,0.2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .contact-detail-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(253,250,246,0.35);
+    margin-bottom: 3px;
+  }
+
+  .contact-detail-value {
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  .contact-hours {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,150,74,0.15);
+  }
+
+  .hours-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(253,250,246,0.35);
+    margin-bottom: 0.8rem;
+  }
+
+  .hours-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--white);
+  }
+
+  .contact-right {
+    background: var(--dark);
+    padding: 100px 10% 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    background: var(--white);
+    color: var(--gold);
+    padding: 14px 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--gold); color: var(--dark); }
+
+  .cta-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cta-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 3vw, 50px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .cta-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    color: rgba(253,250,246,0.45);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    max-width: 340px;
+  }
+
+  .cta-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(184,150,74,0.15);
+  }
+
+  .cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .cta-feature-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(184,150,74,0.1);
+    border: 1px solid rgba(184,150,74,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .cta-feature-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--gold);
+  }
+
+  .cta-feature-text {
+    font-size: 13px;
+    color: rgba(253,250,246,0.6);
+    line-height: 1.5;
+  }
+
+  .cta-note {
+    margin-top: 1rem;
+    font-size: 11.5px;
+    color: rgba(253,250,246,0.25);
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(184,150,74,0.15);
+    padding: 3rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    text-decoration: none;
+    color: rgba(253,250,246,0.35);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(184,150,74,0.2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    background: rgba(184,150,74,0.1);
+  }
+
+  .social-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: rgba(253,250,246,0.5);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .social-link:hover svg { stroke: var(--gold); }
+
+  .footer-copy {
+    width: 100%;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,150,74,0.08);
+    font-size: 12px;
+    color: rgba(253,250,246,0.2);
+    text-align: center;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-stats { position: static; padding: 2rem 10% 0; }
+    .hero-left { min-height: 100vh; }
+    #sobre-nosotros { grid-template-columns: 1fr; }
+    #contacto { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .design-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">ROMA<span> Servicios & </span>Tramites</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    
+    <li><a href="#sobre-nosotros">Nosotros</a></li>
+    <li><a href="#diseno">Diseño</a></li>
+    <li><a href="#editorial">Editorial</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <div class="hero-eyebrow animate">Primera consulta gratuita</div>
+    <h1 class="hero-title animate delay-1">
+      Soluciones<br>
+      <em>efectivas</em> para<br>
+      tus trámites
+    </h1>
+    <p class="hero-subtitle animate delay-2">
+      Asesoría profesional en gestión administrativa, fiscal y legal. Acompañamos cada proceso con rigor, transparencia y dedicación.
+    </p>
+    <div class="hero-actions animate delay-3">
+      <a href="#contacto" class="btn-primary">Solicitar cita</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Compromiso</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Gratis</div>
+        <div class="stat-label">1.ª consulta</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Multi</div>
+        <div class="stat-label">Servicios</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="section-eyebrow" style="margin-bottom: 2rem;">Por qué elegirnos</div>
+
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="hero-card-title">Tramitación sin complicaciones</div>
+      <div class="hero-card-text">Nos encargamos de toda la burocracia para que tú puedas centrarte en lo que realmente importa.</div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="hero-card-title">Asesoría legal de confianza</div>
+      <div class="hero-card-text">Servicio legal personalizado, adaptado a tu situación. Claridad y confidencialidad en cada paso.</div>
+    </div>
+
+    <div class="hero-contact-strip">
+      <a href="tel:611175080" class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.83 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        611 175 080
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&to=roma.servicios.tramites@gmail.com" target="_blank" class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        roma.servicios.tramites@gmail.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div class="services-header">
+    <div>
+      <div class="section-eyebrow">Lo que hacemos</div>
+      <h2 class="section-title">Nuestros <em>servicios</em> principales</h2>
+    </div>
+    <a href="#contacto" class="btn-primary" style="align-self: flex-end;">Primera consulta gratis →</a>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="service-name">Gestión de Trámites</div>
+      <div class="service-desc">Facilitamos la gestión de todos tus trámites administrativos y legales. Eficiencia y rigor en cada proceso, sin que tengas que moverte de casa.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Renovación y solicitud del NIE / TIE</li>
+        <li>Empadronamiento y certificados de residencia</li>
+        <li>Trámites de extranjería y reagrupación familiar</li>
+        <li>Gestión de citas previas con organismos públicos</li>
+        <li>Solicitud de vida laboral y certificados de la Seguridad Social</li>
+        <li>Trámites ante el SEPE, INEM y ayuntamientos</li>
+        <li>Apostillas, traducciones y legalizaciones de documentos</li>
+      </ul>
+      <span class="service-tag">Consulta gratuita</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-name">Declaración de Renta</div>
+      <div class="service-desc">Asesoría y acompañamiento completo en tu declaración fiscal. Analizamos tu situación para que pagues solo lo justo y aproveches todas las deducciones posibles.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Declaración de la Renta (IRPF) para asalariados y autónomos</li>
+        <li>Revisión y corrección de declaraciones anteriores</li>
+        <li>Deducciones por vivienda, familia numerosa e hijos</li>
+        <li>Gestión de rentas del alquiler e inversiones</li>
+        <li>Alta y gestión como autónomo (modelo 036/037)</li>
+        <li>Presentación de declaraciones trimestrales (IVA, IRPF)</li>
+        <li>Asesoramiento fiscal todo el año, no solo en campaña</li>
+      </ul>
+      <span class="service-tag">Sin sorpresas fiscales</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="service-name">Currículums Profesionales</div>
+      <div class="service-desc">Diseñamos currículums efectivos que destacan tus habilidades y abren puertas en el mercado laboral. Tu CV, tu mejor carta de presentación.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Redacción y diseño de CV desde cero</li>
+        <li>Actualización y modernización de currículums existentes</li>
+        <li>15 modelos profesionales disponibles para descargar</li>
+        <li>Cartas de presentación personalizadas</li>
+        <li>Perfiles de LinkedIn optimizados</li>
+        <li>CV en formato Word, PDF o ambos</li>
+        <li>Adaptación a sectores específicos: sanidad, hostelería, administración…</li>
+      </ul>
+      <span class="service-tag">Primera consulta gratis</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="service-name">Servicios Legales</div>
+      <div class="service-desc">Asesoría legal personalizada y adaptada a tus necesidades. Claridad, honestidad y compromiso en cada situación, por compleja que sea.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Asesoramiento en contratos de arrendamiento (pisos, locales)</li>
+        <li>Reclamaciones y gestión de deudas</li>
+        <li>Orientación en despidos y conflictos laborales</li>
+        <li>Derecho de extranjería: permisos, recursos y apelaciones</li>
+        <li>Redacción y revisión de contratos privados</li>
+        <li>Mediación y resolución de conflictos entre particulares</li>
+        <li>Gestión de herencias y testamentos</li>
+      </ul>
+      <span class="service-tag">Trato confidencial</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      </div>
+      <div class="service-name">Diseño Gráfico</div>
+      <div class="service-desc">Logotipos, carteles, flyers, rótulos y proyectos creativos. Identidad visual que comunica, diferencia y perdura en la mente de tus clientes.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Diseño de logotipos e identidad corporativa completa</li>
+        <li>Carteles, flyers y publicidad impresa</li>
+        <li>Tarjetas de visita y papelería corporativa</li>
+        <li>Rótulos, vinilos y señalética para negocios</li>
+        <li>Diseño para redes sociales (posts, stories, banners)</li>
+        <li>Menús, cartas y materiales para hostelería</li>
+        <li>Formatos listos para imprenta o digital</li>
+      </ul>
+      <span class="service-tag">Presupuesto sin compromiso</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="service-name">Limpieza a Domicilio</div>
+      <div class="service-desc">Servicio de limpieza general en el hogar, adaptado a tus necesidades y horarios. Puntual, de confianza y con atención al detalle en cada rincón.</div>
+      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <ul class="service-list">
+        <li>Limpieza general de pisos, casas y apartamentos</li>
+        <li>Limpieza de cristales, persianas y balcones</li>
+        <li>Limpieza profunda de cocinas y baños</li>
+        <li>Servicio puntual o periódico (semanal, quincenal, mensual)</li>
+        <li>Limpieza tras mudanzas o reformas</li>
+        <li>Planchado y organización del hogar</li>
+        <li>Productos de limpieza incluidos o con los tuyos si prefieres</li>
+      </ul>
+      <span class="service-tag">Horario flexible</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="sobre-nosotros">
+  <div class="about-text">
+    <div class="section-eyebrow">Sobre nosotros</div>
+    <h2 class="section-title" style="margin-bottom: 2rem; color: var(--gold);">Tu aliado en cada <em>gestión</em></h2>
+    <p>En ROMA Servicios & Trámites nos dedicamos a ofrecer soluciones integrales que simplifican la vida de nuestros clientes. Combinamos experiencia, dedicación y trato humano.</p>
+    <div class="about-quote" style="border-left-color: var(--gold); color: var(--gold);">
+      "La primera consulta siempre es gratuita porque creemos en construir relaciones de confianza."
+    </div>
+    <p>Desde la gestión de trámites administrativos hasta el diseño gráfico creativo, pasando por la asesoría fiscal y legal, en ROMA encontrarás un equipo comprometido con resultados reales.</p>
+  </div>
+
+  <div class="about-visual">
+    <div class="about-box">
+      <div class="about-feature">
+        <div class="about-feature-dot"></div>
+        <div>
+          <div class="about-feature-title">Primera consulta gratuita</div>
+          <div class="about-feature-text">Sin compromiso. Evaluamos tu caso y te orientamos sin coste alguno.</div>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-feature-dot"></div>
+        <div>
+          <div class="about-feature-title">Atención personalizada</div>
+          <div class="about-feature-text">Cada cliente es único. Adaptamos nuestros servicios a tu situación concreta.</div>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-feature-dot"></div>
+        <div>
+          <div class="about-feature-title">Multidisciplinar</div>
+          <div class="about-feature-text">Legal, fiscal, creativo y doméstico. Un único punto de contacto para todo.</div>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-feature-dot"></div>
+        <div>
+          <div class="about-feature-title">Horario extendido</div>
+          <div class="about-feature-text">Disponibles de lunes a viernes de 9:00 a 20:00 para adaptarnos a tu agenda.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section id="diseno">
+  <div class="design-header">
+    <div>
+      <div class="section-eyebrow">Diseño Gráfico</div>
+      <h2 class="section-title" style="color: var(--white);">Creatividad que <em>comunica</em></h2>
+    </div>
+    <p class="design-subtitle">Desde juegos de mesa personalizados hasta rótulos para negocios. Cada pieza diseñada con identidad propia.</p>
+  </div>
+
+  <div class="design-grid">
+    <div class="design-item">
+      <div class="design-tag">Lúdico</div>
+      <div class="design-item-title">Juegos de mesa personalizados</div>
+      <div class="design-item-text">Diseñamos juegos únicos adaptados a cada proyecto, combinando creatividad, estrategia y un diseño cuidado.</div>
+    </div>
+    <div class="design-item">
+      <div class="design-tag">Eventos</div>
+      <div class="design-item-title">Carteles y flyers</div>
+      <div class="design-item-text">Diseño de material gráfico para eventos, negocios y promociones. Comunicación visual directa y atractiva.</div>
+    </div>
+    <div class="design-item">
+      <div class="design-tag">Identidad</div>
+      <div class="design-item-title">Rótulos para negocios</div>
+      <div class="design-item-text">Creamos rótulos que refuerzan la identidad de tu negocio. Presencia visual profesional y memorable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section id="editorial">
+  <div class="section-eyebrow" style="justify-content: center;">Editorial ROMA</div>
+  <div class="editorial-quote">"Donde nacen nuevas historias."</div>
+  <p class="editorial-desc">Creamos y desarrollamos proyectos editoriales: libros, cómics, revistas y otras publicaciones. Narrativas que cobran vida.</p>
+  <a href="#contacto" class="btn-primary">Cuéntanos tu proyecto</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" style="padding: 0;">
+  <div class="contact-left">
+    <div class="section-eyebrow">Contacto</div>
+    <h2 class="section-title">Hablemos<br>de tu <em>caso</em></h2>
+
+    <div class="contact-details">
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.83 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Teléfono</div>
+          <div class="contact-detail-value">611 175 080</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Correo electrónico</div>
+          <div class="contact-detail-value"><a href="https://mail.google.com/mail/?view=cm&to=roma.servicios.tramites@gmail.com" target="_blank" style="color:var(--white);text-decoration:none;">roma.servicios.tramites@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Dirección</div>
+          <div class="contact-detail-value">C. Mayor 7, Nava de Campaña<br>Oficina: C. de Dulce Chacón 6, Albacete</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Instagram</div>
+          <div class="contact-detail-value"><a href="https://www.instagram.com/romaservtra?igsh=Mzk0ZzZqeGttenE5" target="_blank" style="color:var(--white);text-decoration:none;">@ROMASERVTRA</a></div>
+        </div>
+      </div>
+    </div>
+      <div class="hours-label">Horario de atención</div>
+      <div class="hours-value">Lunes – Viernes: 9:00 – 20:00</div>
+    </div>
+  </div>
+
+  
+
+  <div class="contact-right">
+
+    <div class="cta-eyebrow">Primera consulta gratuita</div>
+
+    <div class="cta-title">¿Listo para<br><em>empezar?</em></div>
+
+    <p class="cta-desc">Reserva tu cita en menos de un minuto. Sin esperas, sin papeleo. Cuéntanos tu caso y encontraremos la mejor solución juntos.</p>
+
+    <div class="cta-features">
+      <div class="cta-feature">
+        <div class="cta-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="cta-feature-text">Trato confidencial y personalizado</div>
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="cta-feature-text">Respuesta en menos de 24 horas</div>
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="cta-feature-text">Sin compromiso, sin letra pequeña</div>
+      </div>
+    </div>
+
+    <a href="https://calendar.app.google/NbbjtsSL3fRHv12G8"
+    target="_blank"
+    class="form-submit"
+    style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;width:100%;padding:16px 32px;margin-top:0.5rem;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;stroke:var(--gold);"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Reservar cita
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ROMA<span> Servicios & </span>Tramites</div>
+  <ul class="footer-links">
+    <li><a href="#sobre-nosotros">Quiénes somos</a></li>
+    <li><button class="cookie-link" style="color:rgba(253,250,246,0.4);font-size:13px;text-decoration:none;" onmouseover="this.style.color='#B8964A'" onmouseout="this.style.color='rgba(253,250,246,0.4)'" onclick="openLegal('aviso')">Aviso legal</button></li>
+    <li><button class="cookie-link" style="color:rgba(253,250,246,0.4);font-size:13px;text-decoration:none;" onmouseover="this.style.color='#B8964A'" onmouseout="this.style.color='rgba(253,250,246,0.4)'" onclick="openLegal('privacidad')">Privacidad</button></li>
+    <li><button class="cookie-link" style="color:rgba(253,250,246,0.4);font-size:13px;text-decoration:none;" onmouseover="this.style.color='#B8964A'" onmouseout="this.style.color='rgba(253,250,246,0.4)'" onclick="openLegal('cookies')">Cookies</button></li>
+  </ul>
+  <div class="footer-copy">© 2026 ROMA Servicios & Tramites. Todos los derechos reservados.</div>
+</footer>
+
+<!-- SERVICE MODAL -->
+<div class="service-modal-overlay" id="serviceModalOverlay">
+  <div class="service-modal" id="serviceModal">
+
+    <div class="modal-header">
+      <div class="modal-header-top">
+        <div class="modal-icon" id="modalIcon"></div>
+        <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-eyebrow" id="modalNum"></div>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-section-label">Qué incluye</div>
+      <ul class="modal-list" id="modalList"></ul>
+    </div>
+
+    <div class="modal-footer">
+      <div class="modal-tag" id="modalTag"></div>
+      <a href="#contacto" class="modal-cta" id="modalCta">
+        Solicitar información →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const serviceData = [
+    {
+      num: '01',
+      name: 'Gestión de Trámites',
+      desc: 'Facilitamos la gestión de todos tus trámites administrativos y legales. Eficiencia y rigor en cada proceso, sin que tengas que moverte de casa.',
+      items: [
+        'Renovación y solicitud del NIE / TIE',
+        'Empadronamiento y certificados de residencia',
+        'Trámites de extranjería y reagrupación familiar',
+        'Gestión de citas previas con organismos públicos',
+        'Solicitud de vida laboral y certificados de la Seguridad Social',
+        'Trámites ante el SEPE, INEM y ayuntamientos',
+        'Apostillas, traducciones y legalizaciones de documentos'
+      ],
+      tag: 'Consulta gratuita',
+      iconHtml: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>'
+    },
+    {
+      num: '02',
+      name: 'Declaración de Renta',
+      desc: 'Asesoría y acompañamiento completo en tu declaración fiscal. Analizamos tu situación para que pagues solo lo justo y aproveches todas las deducciones posibles.',
+      items: [
+        'Declaración de la Renta (IRPF) para asalariados y autónomos',
+        'Revisión y corrección de declaraciones anteriores',
+        'Deducciones por vivienda, familia numerosa e hijos',
+        'Gestión de rentas del alquiler e inversiones',
+        'Alta y gestión como autónomo (modelo 036/037)',
+        'Presentación de declaraciones trimestrales (IVA, IRPF)',
+        'Asesoramiento fiscal todo el año, no solo en campaña'
+      ],
+      tag: 'Sin sorpresas fiscales',
+      iconHtml: '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>'
+    },
+    {
+      num: '03',
+      name: 'Currículums Profesionales',
+      desc: 'Diseñamos currículums efectivos que destacan tus habilidades y abren puertas en el mercado laboral. Tu CV, tu mejor carta de presentación.',
+      items: [
+        'Redacción y diseño de CV desde cero',
+        'Actualización y modernización de currículums existentes',
+        '15 modelos profesionales disponibles para descargar',
+        'Cartas de presentación personalizadas',
+        'Perfiles de LinkedIn optimizados',
+        'CV en formato Word, PDF o ambos',
+        'Adaptación a sectores específicos: sanidad, hostelería, administración…'
+      ],
+      tag: 'Primera consulta gratis',
+      iconHtml: '<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'
+    },
+    {
+      num: '04',
+      name: 'Servicios Legales',
+      desc: 'Asesoría legal personalizada y adaptada a tus necesidades. Claridad, honestidad y compromiso en cada situación, por compleja que sea.',
+      items: [
+        'Asesoramiento en contratos de arrendamiento (pisos, locales)',
+        'Reclamaciones y gestión de deudas',
+        'Orientación en despidos y conflictos laborales',
+        'Derecho de extranjería: permisos, recursos y apelaciones',
+        'Redacción y revisión de contratos privados',
+        'Mediación y resolución de conflictos entre particulares',
+        'Gestión de herencias y testamentos'
+      ],
+      tag: 'Trato confidencial',
+      iconHtml: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
+    },
+    {
+      num: '05',
+      name: 'Diseño Gráfico',
+      desc: 'Logotipos, carteles, flyers, rótulos y proyectos creativos. Identidad visual que comunica, diferencia y perdura en la mente de tus clientes.',
+      items: [
+        'Diseño de logotipos e identidad corporativa completa',
+        'Carteles, flyers y publicidad impresa',
+        'Tarjetas de visita y papelería corporativa',
+        'Rótulos, vinilos y señalética para negocios',
+        'Diseño para redes sociales (posts, stories, banners)',
+        'Menús, cartas y materiales para hostelería',
+        'Formatos listos para imprenta o digital'
+      ],
+      tag: 'Presupuesto sin compromiso',
+      iconHtml: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>'
+    },
+    {
+      num: '06',
+      name: 'Limpieza a Domicilio',
+      desc: 'Servicio de limpieza general en el hogar, adaptado a tus necesidades y horarios. Puntual, de confianza y con atención al detalle en cada rincón.',
+      items: [
+        'Limpieza general de pisos, casas y apartamentos',
+        'Limpieza de cristales, persianas y balcones',
+        'Limpieza profunda de cocinas y baños',
+        'Servicio puntual o periódico (semanal, quincenal, mensual)',
+        'Limpieza tras mudanzas o reformas',
+        'Planchado y organización del hogar',
+        'Productos de limpieza incluidos o con los tuyos si prefieres'
+      ],
+      tag: 'Horario flexible',
+      iconHtml: '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+    }
+  ];
+
+  const overlay   = document.getElementById('serviceModalOverlay');
+  const btnClose  = document.getElementById('modalClose');
+  const modalCta  = document.getElementById('modalCta');
+
+  function openModal(index) {
+    const s = serviceData[index];
+    document.getElementById('modalNum').textContent   = s.num;
+    document.getElementById('modalIcon').innerHTML    = s.iconHtml;
+    document.getElementById('modalTitle').textContent = s.name;
+    document.getElementById('modalDesc').textContent  = s.desc;
+    document.getElementById('modalTag').textContent   = s.tag;
+    const list = document.getElementById('modalList');
+    list.innerHTML = s.items.map(i => `<li>${i}</li>`).join('');
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Abrir modal al hacer clic en la tarjeta completa o en el hint
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.dataset.serviceIndex = i;
+    card.addEventListener('click', (e) => {
+      openModal(parseInt(card.dataset.serviceIndex));
+    });
+  });
+
+  btnClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  modalCta.addEventListener('click', closeModal);
+</script>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-left">
+      <div class="cookie-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      </div>
+      <div>
+        <div class="cookie-banner-title">Usamos cookies</div>
+        <div class="cookie-banner-text">
+          Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes aceptar todas, configurarlas o rechazarlas. Consulta nuestra
+          <button class="cookie-link" onclick="openLegal('cookies')">Política de Cookies</button>.
+        </div>
+      </div>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn-reject" id="cookieReject">Rechazar</button>
+      <button class="cookie-btn-config" id="cookieConfig">Configurar</button>
+      <button class="cookie-btn-accept" id="cookieAccept">Aceptar todas</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE CONFIG PANEL -->
+<div class="cookie-config-overlay" id="cookieConfigOverlay">
+  <div class="cookie-config-panel">
+    <div class="cookie-config-header">
+      <div>
+        <div class="cookie-config-eyebrow">Preferencias de privacidad</div>
+        <div class="cookie-config-title">Gestiona tus cookies</div>
+      </div>
+      <button class="cookie-config-close" onclick="document.getElementById('cookieConfigOverlay').classList.remove('active')">✕</button>
+    </div>
+    <div class="cookie-config-body">
+      <p class="cookie-config-intro">Selecciona qué tipos de cookies deseas permitir. Puedes cambiar estas preferencias en cualquier momento.</p>
+
+      <div class="cookie-type">
+        <div class="cookie-type-info">
+          <div class="cookie-type-name">Cookies esenciales</div>
+          <div class="cookie-type-desc">Necesarias para el funcionamiento básico del sitio. No pueden desactivarse.</div>
+        </div>
+        <div class="cookie-toggle cookie-toggle-locked">
+          <span>Siempre activas</span>
+        </div>
+      </div>
+
+      <div class="cookie-type">
+        <div class="cookie-type-info">
+          <div class="cookie-type-name">Cookies analíticas</div>
+          <div class="cookie-type-desc">Nos permiten conocer cómo los usuarios interactúan con el sitio para mejorar su rendimiento.</div>
+        </div>
+        <label class="cookie-toggle-switch">
+          <input type="checkbox" id="toggleAnalytics">
+          <span class="cookie-slider"></span>
+        </label>
+      </div>
+
+      <div class="cookie-type">
+        <div class="cookie-type-info">
+          <div class="cookie-type-name">Cookies de marketing</div>
+          <div class="cookie-type-desc">Se utilizan para mostrarte publicidad relevante según tus intereses y comportamiento.</div>
+        </div>
+        <label class="cookie-toggle-switch">
+          <input type="checkbox" id="toggleMarketing">
+          <span class="cookie-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="cookie-config-footer">
+      <button class="cookie-btn-reject" onclick="saveCookieConfig(false)">Rechazar opcionales</button>
+      <button class="cookie-btn-accept" onclick="saveCookieConfig(true)">Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL MODALS -->
+<div class="legal-overlay" id="legalOverlay">
+  <div class="legal-panel">
+    <div class="legal-panel-header">
+      <div class="legal-panel-title" id="legalTitle"></div>
+      <button class="legal-close" onclick="closeLegal()">✕</button>
+    </div>
+    <div class="legal-panel-body" id="legalBody"></div>
+  </div>
+</div>
+
+<style>
+  /* ── COOKIE BANNER ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(184,150,74,0.2);
+    z-index: 900;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.35);
+  }
+  .cookie-banner.visible { transform: translateY(0); }
+
+  .cookie-banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cookie-banner-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .cookie-banner-icon {
+    width: 36px; height: 36px;
+    background: rgba(184,150,74,0.1);
+    border: 1px solid rgba(184,150,74,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .cookie-banner-icon svg { width: 18px; height: 18px; stroke: var(--gold); }
+
+  .cookie-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .cookie-banner-text {
+    font-size: 12.5px;
+    color: rgba(253,250,246,0.5);
+    line-height: 1.7;
+  }
+
+  .cookie-link {
+    background: none; border: none; cursor: pointer;
+    color: var(--gold);
+    font-size: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    padding: 0;
+  }
+  .cookie-link:hover { color: var(--gold-light); }
+
+  .cookie-banner-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .cookie-btn-reject {
+    background: transparent;
+    border: 1px solid rgba(253,250,246,0.15);
+    color: rgba(253,250,246,0.5);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cookie-btn-reject:hover { border-color: rgba(253,250,246,0.35); color: var(--white); }
+
+  .cookie-btn-config {
+    background: transparent;
+    border: 1px solid rgba(184,150,74,0.35);
+    color: var(--gold);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cookie-btn-config:hover { background: rgba(184,150,74,0.08); }
+
+  .cookie-btn-accept {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--dark);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .cookie-btn-accept:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+  /* ── COOKIE CONFIG PANEL ── */
+  .cookie-config-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,12,9,0.65);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+  .cookie-config-overlay.active { display: flex; }
+
+  .cookie-config-panel {
+    background: var(--white);
+    width: 100%;
+    max-width: 520px;
+    animation: modalIn 0.3s cubic-bezier(0.22,1,0.36,1);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow: hidden;
+  }
+
+  .cookie-config-header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: var(--dark);
+  }
+
+  .cookie-config-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .cookie-config-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .cookie-config-close {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(253,250,246,0.5);
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .cookie-config-close:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+
+  .cookie-config-body {
+    padding: 1.8rem 2rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .cookie-config-intro {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cookie-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cookie-type:last-child { border-bottom: none; }
+
+  .cookie-type-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+  .cookie-type-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 320px;
+  }
+
+  .cookie-toggle-locked {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .cookie-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .cookie-toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .cookie-slider {
+    position: absolute;
+    inset: 0;
+    background: rgba(184,150,74,0.15);
+    border: 1px solid var(--border);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .cookie-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    left: 3px; bottom: 3px;
+    background: var(--muted);
+    transition: 0.3s;
+  }
+  .cookie-toggle-switch input:checked + .cookie-slider { background: rgba(184,150,74,0.2); border-color: var(--gold); }
+  .cookie-toggle-switch input:checked + .cookie-slider::before { transform: translateX(20px); background: var(--gold); }
+
+  .cookie-config-footer {
+    padding: 1.2rem 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    background: var(--light);
+  }
+
+  /* ── LEGAL MODALS ── */
+  .legal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,12,9,0.6);
+    z-index: 1050;
+    align-items: stretch;
+    justify-content: flex-end;
+    backdrop-filter: blur(4px);
+  }
+  .legal-overlay.active { display: flex; }
+
+  .legal-panel {
+    background: var(--white);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    animation: drawerIn 0.35s cubic-bezier(0.22,1,0.36,1);
+    overflow: hidden;
+  }
+
+  .legal-panel-header {
+    background: var(--dark);
+    padding: 2.2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .legal-panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .legal-close {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(253,250,246,0.5);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+  .legal-close:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+
+  .legal-panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2.5rem;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  .legal-panel-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 1.8rem 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .legal-panel-body h3:first-child { margin-top: 0; }
+
+  .legal-panel-body p {
+    margin-bottom: 0.9rem;
+    color: var(--mid);
+  }
+
+  .legal-panel-body ul {
+    list-style: none;
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .legal-panel-body ul li {
+    padding-left: 1.2rem;
+    position: relative;
+    color: var(--mid);
+  }
+  .legal-panel-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  .legal-panel-body .legal-updated {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Footer legal links */
+  .footer-legal-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(184,150,74,0.08);
+    margin-top: 1rem;
+  }
+  .footer-legal-links button {
+    background: none; border: none; cursor: pointer;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: rgba(253,250,246,0.25);
+    text-transform: uppercase;
+    transition: color 0.2s;
+    padding: 0;
+  }
+  .footer-legal-links button:hover { color: var(--gold); }
+</style>
+
+<script>
+  /* ── LEGAL CONTENT ── */
+  const legalContent = {
+    aviso: {
+      title: 'Aviso Legal',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. Datos del titular</h3>
+        <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa:</p>
+        <ul>
+          <li><strong>Denominación:</strong> ROMA Servicios & Tramites</li>
+          <li><strong>Actividad:</strong> Gestión de trámites, asesoría fiscal, servicios legales y diseño</li>
+          <li><strong>Dirección:</strong> C. Mayor 7, Nava de Campaña / C. de Dulce Chacón 6, Albacete</li>
+          <li><strong>Teléfono:</strong> 611 175 080</li>
+          <li><strong>Correo:</strong> roma.servicios.tramites@gmail.com</li>
+        </ul>
+        <h3>2. Condiciones de uso</h3>
+        <p>El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación plena de las presentes condiciones de uso. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios ofrecidos.</p>
+        <h3>3. Propiedad intelectual</h3>
+        <p>Todos los contenidos de este sitio web (textos, imágenes, diseño gráfico, código fuente) son propiedad de ROMA Servicios & Tramites o de terceros que han autorizado su uso, y están protegidos por las leyes de propiedad intelectual e industrial.</p>
+        <p>Queda prohibida la reproducción, distribución, comunicación pública o transformación de cualquier contenido sin autorización expresa y por escrito.</p>
+        <h3>4. Responsabilidad</h3>
+        <p>ROMA Servicios & Tramites no se hace responsable de los daños derivados del uso incorrecto de los servicios del sitio web, ni de los errores u omisiones en los contenidos cuando no sean imputables a su negligencia.</p>
+        <h3>5. Legislación aplicable</h3>
+        <p>Las presentes condiciones se rigen por la legislación española vigente. Para cualquier controversia derivada del uso de este sitio web, las partes se someten a los Juzgados y Tribunales de Albacete, con renuncia expresa a cualquier otro fuero.</p>
+      `
+    },
+    privacidad: {
+      title: 'Política de Privacidad',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. Responsable del tratamiento</h3>
+        <p>ROMA Servicios & Tramites, con domicilio en C. Mayor 7, Nava de Campaña y oficina en C. de Dulce Chacón 6, Albacete. Contacto: roma.servicios.tramites@gmail.com / 611 175 080.</p>
+        <h3>2. Datos que recogemos</h3>
+        <p>Recogemos únicamente los datos que tú nos facilitas voluntariamente a través del formulario de contacto:</p>
+        <ul>
+          <li>Nombre y apellidos</li>
+          <li>Dirección de correo electrónico</li>
+          <li>Número de teléfono (si lo proporcionas)</li>
+          <li>Mensaje o consulta enviada</li>
+        </ul>
+        <h3>3. Finalidad y base legal</h3>
+        <p>Tratamos tus datos exclusivamente para:</p>
+        <ul>
+          <li>Responder a tu consulta o solicitud de información (base: ejecución de un contrato o medidas precontractuales)</li>
+          <li>Enviarte información sobre nuestros servicios si lo autorizas expresamente (base: consentimiento)</li>
+        </ul>
+        <h3>4. Conservación de datos</h3>
+        <p>Conservamos tus datos el tiempo necesario para atender tu solicitud y, en su caso, mientras exista relación contractual. Transcurrido dicho plazo, los datos serán suprimidos de forma segura.</p>
+        <h3>5. Destinatarios</h3>
+        <p>No cedemos tus datos a terceros salvo obligación legal. Utilizamos proveedores de servicios técnicos (alojamiento web, correo) que actúan como encargados del tratamiento bajo contrato.</p>
+        <h3>6. Tus derechos</h3>
+        <p>Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a roma.servicios.tramites@gmail.com, adjuntando copia de tu DNI. También puedes presentar reclamación ante la Agencia Española de Protección de Datos (aepd.es).</p>
+        <h3>7. Seguridad</h3>
+        <p>Adoptamos las medidas técnicas y organizativas necesarias para garantizar la seguridad e integridad de tus datos y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+      `
+    },
+    cookies: {
+      title: 'Política de Cookies',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. ¿Qué son las cookies?</h3>
+        <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo cuando los visitas. Permiten que el sitio recuerde tus acciones y preferencias durante un período de tiempo.</p>
+        <h3>2. Cookies que utilizamos</h3>
+        <p><strong>Cookies esenciales (siempre activas)</strong></p>
+        <ul>
+          <li><strong>cookie_consent</strong> — Almacena tus preferencias sobre cookies. Duración: 12 meses.</li>
+          <li><strong>session_id</strong> — Necesaria para el correcto funcionamiento del formulario de contacto. Duración: sesión.</li>
+        </ul>
+        <p><strong>Cookies analíticas (requieren consentimiento)</strong></p>
+        <ul>
+          <li><strong>_ga, _gid</strong> — Google Analytics. Analizan el tráfico del sitio de forma anónima y agregada. Duración: hasta 2 años.</li>
+        </ul>
+        <p><strong>Cookies de marketing (requieren consentimiento)</strong></p>
+        <ul>
+          <li><strong>_fbp</strong> — Facebook Pixel. Se utiliza para medir la efectividad de anuncios. Duración: 3 meses.</li>
+        </ul>
+        <h3>3. Gestión de cookies</h3>
+        <p>Puedes aceptar, rechazar o configurar las cookies en cualquier momento a través del panel de preferencias disponible en el pie de página. También puedes configurar tu navegador para bloquear o eliminar cookies:</p>
+        <ul>
+          <li>Chrome: Configuración → Privacidad → Cookies</li>
+          <li>Firefox: Opciones → Privacidad y seguridad</li>
+          <li>Safari: Preferencias → Privacidad</li>
+          <li>Edge: Configuración → Privacidad</li>
+        </ul>
+        <h3>4. Cookies de terceros</h3>
+        <p>Algunas cookies son instaladas por servicios de terceros (Google, Meta). ROMA Servicios & Tramites no controla dichas cookies; te recomendamos revisar las políticas de privacidad de cada proveedor.</p>
+        <h3>5. Más información</h3>
+        <p>Para cualquier consulta sobre el uso de cookies escríbenos a roma.servicios.tramites@gmail.com. Puedes obtener más información sobre cookies en la web de la Agencia Española de Protección de Datos (aepd.es).</p>
+      `
+    }
+  };
+
+  /* ── LEGAL PANEL ── */
+  function openLegal(type) {
+    const data = legalContent[type];
+    document.getElementById('legalTitle').textContent = data.title;
+    document.getElementById('legalBody').innerHTML = data.html;
+    document.getElementById('legalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLegal() {
+    document.getElementById('legalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('legalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeLegal();
+  });
+
+  /* ── COOKIE BANNER ── */
+  const COOKIE_KEY = 'roma_cookie_consent';
+
+  function setCookieConsent(value) {
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    document.cookie = COOKIE_KEY + '=' + value + '; expires=' + expires.toUTCString() + '; path=/; SameSite=Lax';
+  }
+
+  function getCookieConsent() {
+    const match = document.cookie.match(new RegExp('(^| )' + COOKIE_KEY + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  function hideBanner() {
+    document.getElementById('cookieBanner').classList.remove('visible');
+  }
+
+  document.getElementById('cookieAccept').addEventListener('click', function() {
+    setCookieConsent('all');
+    hideBanner();
+  });
+
+  document.getElementById('cookieReject').addEventListener('click', function() {
+    setCookieConsent('essential');
+    hideBanner();
+  });
+
+  document.getElementById('cookieConfig').addEventListener('click', function() {
+    document.getElementById('cookieConfigOverlay').classList.add('active');
+  });
+
+  function saveCookieConfig(saveAll) {
+    if (saveAll) {
+      const analytics = document.getElementById('toggleAnalytics').checked;
+      const marketing = document.getElementById('toggleMarketing').checked;
+      const val = analytics && marketing ? 'all' : analytics ? 'analytics' : marketing ? 'marketing' : 'essential';
+      setCookieConsent(val);
+    } else {
+      setCookieConsent('essential');
+    }
+    document.getElementById('cookieConfigOverlay').classList.remove('active');
+    hideBanner();
+  }
+
+  /* Show banner if no consent stored */
+  window.addEventListener('load', function() {
+    if (!getCookieConsent()) {
+      setTimeout(function() {
+        document.getElementById('cookieBanner').classList.add('visible');
+      }, 800);
+    }
+  });
+
+  /* ESC key closes legal and config */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLegal();
+      document.getElementById('cookieConfigOverlay').classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>
