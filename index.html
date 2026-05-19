@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -372,10 +372,18 @@
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 2px;
-    background: var(--border);
+    background: var(--white);
   }
+
+  .service-card { grid-column: span 2; }
+
+  .service-card:nth-child(4) { grid-column: 2 / span 2; }
+  .service-card:nth-child(5) { grid-column: 4 / span 2; }
+
+  .service-card:nth-child(4),
+  .service-card:nth-child(5) { }
 
   .service-card {
     background: var(--white);
@@ -1315,13 +1323,8 @@
       <div class="service-desc">Facilitamos la gestión de todos tus trámites administrativos y legales. Eficiencia y rigor en cada proceso, sin que tengas que moverte de casa.</div>
       <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       <ul class="service-list">
-        <li>Renovación y solicitud del NIE / TIE</li>
-        <li>Empadronamiento y certificados de residencia</li>
-        <li>Trámites de extranjería y reagrupación familiar</li>
-        <li>Gestión de citas previas con organismos públicos</li>
         <li>Solicitud de vida laboral y certificados de la Seguridad Social</li>
         <li>Trámites ante el SEPE, INEM y ayuntamientos</li>
-        <li>Apostillas, traducciones y legalizaciones de documentos</li>
       </ul>
       <span class="service-tag">Consulta gratuita</span>
     </div>
@@ -1369,26 +1372,6 @@
     <div class="service-card">
       <div class="service-num">04</div>
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div class="service-name">Servicios Legales</div>
-      <div class="service-desc">Asesoría legal personalizada y adaptada a tus necesidades. Claridad, honestidad y compromiso en cada situación, por compleja que sea.</div>
-      <div class="service-card-hint">Ver detalle <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      <ul class="service-list">
-        <li>Asesoramiento en contratos de arrendamiento (pisos, locales)</li>
-        <li>Reclamaciones y gestión de deudas</li>
-        <li>Orientación en despidos y conflictos laborales</li>
-        <li>Derecho de extranjería: permisos, recursos y apelaciones</li>
-        <li>Redacción y revisión de contratos privados</li>
-        <li>Mediación y resolución de conflictos entre particulares</li>
-        <li>Gestión de herencias y testamentos</li>
-      </ul>
-      <span class="service-tag">Trato confidencial</span>
-    </div>
-
-    <div class="service-card">
-      <div class="service-num">05</div>
-      <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
       </div>
       <div class="service-name">Diseño Gráfico</div>
@@ -1407,7 +1390,7 @@
     </div>
 
     <div class="service-card">
-      <div class="service-num">06</div>
+      <div class="service-num">05</div>
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </div>
@@ -1654,13 +1637,8 @@
       name: 'Gestión de Trámites',
       desc: 'Facilitamos la gestión de todos tus trámites administrativos y legales. Eficiencia y rigor en cada proceso, sin que tengas que moverte de casa.',
       items: [
-        'Renovación y solicitud del NIE / TIE',
-        'Empadronamiento y certificados de residencia',
-        'Trámites de extranjería y reagrupación familiar',
-        'Gestión de citas previas con organismos públicos',
         'Solicitud de vida laboral y certificados de la Seguridad Social',
-        'Trámites ante el SEPE, INEM y ayuntamientos',
-        'Apostillas, traducciones y legalizaciones de documentos'
+        'Trámites ante el SEPE, INEM y ayuntamientos'
       ],
       tag: 'Consulta gratuita',
       iconHtml: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>'
@@ -1699,22 +1677,6 @@
     },
     {
       num: '04',
-      name: 'Servicios Legales',
-      desc: 'Asesoría legal personalizada y adaptada a tus necesidades. Claridad, honestidad y compromiso en cada situación, por compleja que sea.',
-      items: [
-        'Asesoramiento en contratos de arrendamiento (pisos, locales)',
-        'Reclamaciones y gestión de deudas',
-        'Orientación en despidos y conflictos laborales',
-        'Derecho de extranjería: permisos, recursos y apelaciones',
-        'Redacción y revisión de contratos privados',
-        'Mediación y resolución de conflictos entre particulares',
-        'Gestión de herencias y testamentos'
-      ],
-      tag: 'Trato confidencial',
-      iconHtml: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
-    },
-    {
-      num: '05',
       name: 'Diseño Gráfico',
       desc: 'Logotipos, carteles, flyers, rótulos y proyectos creativos. Identidad visual que comunica, diferencia y perdura en la mente de tus clientes.',
       items: [
@@ -1730,7 +1692,7 @@
       iconHtml: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>'
     },
     {
-      num: '06',
+      num: '05',
       name: 'Limpieza a Domicilio',
       desc: 'Servicio de limpieza general en el hogar, adaptado a tus necesidades y horarios. Puntual, de confianza y con atención al detalle en cada rincón.',
       items: [
